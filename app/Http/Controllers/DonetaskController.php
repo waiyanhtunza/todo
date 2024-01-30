@@ -16,7 +16,6 @@ class DonetaskController extends Controller
 
     public function show($id)
     {
-        
         $doneTask = DoneTask::findOrFail($id);
 
         return view('donetasks.detail',[

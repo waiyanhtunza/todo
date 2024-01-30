@@ -51,7 +51,6 @@ class TaskController extends Controller
             'note' => 'nullable'
         ]);
 
-        // dd($request);
         if($request->hasFile('img'))
         {
             $name = time().'.'.$request->img->getClientOriginalName();
@@ -61,29 +60,20 @@ class TaskController extends Controller
             Storage::disk('public')->delete($task->img ?? '');
         };
 
-        // $task->task = $vail['task'];
-        // $task->img = $vail['img' ?? ''];
-        // $task->note = $vail['note'];
-        // $task->save();
-
         $task->update($vail);
         return redirect()->route('tasks.show',$task->id);
     }
 
     public function     complete(Task $task)
     {
-        
         $done = new DoneTask();
         $done->task = $task->task ;
         $done->img = $task->img ;
         $done->note = $task->note ;
-        
-    
         $done->save();
 
+        //delete complete
         $task->delete();
         return redirect()->route('home');
-
-
     }
 }
