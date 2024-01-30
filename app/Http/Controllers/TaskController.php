@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DoneTask;
 use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -61,9 +62,26 @@ class TaskController extends Controller
         };
 
         $task->task = $vail['task'];
-        $task->img = $vail['img'];
+        $task->img = $vail['img' ?? ''];
         $task->note = $vail['note'];
         $task->save();
         return redirect()->route('tasks.show',$task->id);
+    }
+
+    public function     complete(Task $task)
+    {
+        
+        $done = new DoneTask();
+        $done->task = $task->task ;
+        $done->img = $task->img ;
+        $done->note = $task->note ;
+        
+    
+        $done->save();
+
+        $task->delete();
+        return redirect()->route('home');
+
+
     }
 }

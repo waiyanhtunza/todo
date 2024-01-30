@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DonetaskController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
@@ -27,4 +28,11 @@ Route::post('/tasks/{task}/edit',[TaskController::class,'edit'])->name('tasks.ed
 
 Route::put('/tasks/{task}',[TaskController::class,'update'])->name('tasks.update');
 
+Route::post('/tasks/{task}/complete',[TaskController::class,'complete'])->name('tasks.complete');
+
+Route::delete('/donetasks/{task}',[DonetaskController::class,'destroy'])->name('donetasks.destroy');
+
+Route::post('/donetasks/{task}',[DonetaskController::class,'show'])->name('donetasks.show');
+
+Route::get('/donetasks',[DonetaskController::class,'index'])->name('donetasks.complete');
 
