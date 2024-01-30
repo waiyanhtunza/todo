@@ -9,10 +9,8 @@ class HomeController extends Controller
 {
     public function index(Task $task)
     {
-
-
         return view('home',[
-            'tasks' => Task::all(),
+            'tasks' => Task::orderBy('created_at','desc')->paginate(5),
         ]);
     }
 }

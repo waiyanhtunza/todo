@@ -5,7 +5,7 @@
             <!-- Component Start -->
             <div class="md:w-1/2 w-full  p-8 bg-gray-400 rounded-lg shadow-lg  text-gray-200 ">
 
-                @include('tasks.user')
+                @include('donetasks.user')
 
                
                 <div>

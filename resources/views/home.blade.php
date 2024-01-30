@@ -17,7 +17,7 @@
                         
                     @endforeach
                     <div class="text-gray-200">
-                        {{-- {{$tasks->links('pagination::bootstrap-5')}} --}}
+                        {{$tasks->links('pagination::bootstrap-5')}}
                     </div>
                 </div>
 

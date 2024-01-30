@@ -61,10 +61,12 @@ class TaskController extends Controller
             Storage::disk('public')->delete($task->img ?? '');
         };
 
-        $task->task = $vail['task'];
-        $task->img = $vail['img' ?? ''];
-        $task->note = $vail['note'];
-        $task->save();
+        // $task->task = $vail['task'];
+        // $task->img = $vail['img' ?? ''];
+        // $task->note = $vail['note'];
+        // $task->save();
+
+        $task->update($vail);
         return redirect()->route('tasks.show',$task->id);
     }
 
